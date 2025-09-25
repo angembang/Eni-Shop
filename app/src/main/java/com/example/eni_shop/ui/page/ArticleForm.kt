@@ -43,7 +43,7 @@ fun ArticleForm (
         TextField(description, onValueChange = {description = it}, label = {Text("Description")}, modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp))
-        TextField(price, onValueChange = {price = it}, label = {Text("Prix")}, modifier = Modifier
+        TextField(price, onValueChange = { it -> price = it.filter { it.isDigit() }}, label = {Text("Prix")}, modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp))
 
@@ -100,7 +100,7 @@ fun ArticleForm (
         },
             modifier
                 .fillMaxWidth()
-                .padding(1.dp)) {
+                .padding(16.dp)) {
             Text(
                 "Enregistrer",
                 //color = Color.White,

@@ -1,6 +1,7 @@
 package com.example.eni_shop.ui.page.components
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,10 +22,12 @@ import com.example.eni_shop.model.Article
 
 @SuppressLint("NotConstructor")
 @Composable
-fun ArticleCard(article: Article, modifier: Modifier = Modifier) {
+fun ArticleCard(article: Article,
+                    modifier: Modifier = Modifier,
+                onclickArticle: (article: Article) -> Unit) {
     Card (
         modifier
-            .fillMaxWidth()
+            .fillMaxWidth().clickable{onclickArticle(article)}
             .padding(top = 24.dp)
     ){
         Column(modifier = modifier

@@ -33,5 +33,9 @@ class ArticleViewModel(articleRepository: ArticleRepository): ViewModel() {
         }
     }
 
+    fun AddArticle(x0: Article) {
+        TODO("Not yet implemented")
+    }
+
 
 }

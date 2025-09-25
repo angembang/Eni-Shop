@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.eni_shop.ui.page.ArticlePage
 import com.example.eni_shop.ui.page.CategoryFilterChip
 import com.example.eni_shop.ui.page.components.TopAppBar
+import com.example.eni_shop.ui.router.AppNavHost
 import com.example.eni_shop.ui.theme.ENIShopTheme
 import com.example.eni_shop.viewModel.ArticleViewModel
 
@@ -42,7 +43,9 @@ class MainActivity : ComponentActivity() {
                     )*/
 
                     // List of articles
-                    ArticlePage(Modifier.padding(innerPadding))
+                    //ArticlePage(Modifier.padding(innerPadding))
+
+                    AppNavHost(Modifier.padding(innerPadding))
 
 
                     /*ArticleDetail(

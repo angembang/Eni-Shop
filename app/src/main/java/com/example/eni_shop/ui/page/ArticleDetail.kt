@@ -8,9 +8,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.eni_shop.model.Article
 import com.example.eni_shop.ui.page.components.ArticleImage
 import java.text.SimpleDateFormat
@@ -29,7 +35,8 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticleDetail(article: Article,
-                  modifier: Modifier = Modifier
+                  modifier: Modifier = Modifier,
+                  navController: NavHostController
 ) {
     val formatter = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
     val isFavorite = true;
@@ -45,7 +52,19 @@ fun ArticleDetail(article: Article,
                 title = { Text(
                     article.name,
                     fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleLarge) }
+                    style = MaterialTheme.typography.titleLarge) },
+
+                navigationIcon = {
+                    // Return button
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Retour"
+                        )
+                    }
+                }
+
+
             )
         }
     ) { innerPadding ->
