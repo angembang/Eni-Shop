@@ -60,10 +60,16 @@ ViewModel + StateFlow
 
 eni-shop/
  ├── model/ # Classes de données (Article, etc.)
+ 
  ├── repository/ # Gestion des données
  ├── viewmodel/ # Logique métier (ArticleViewModel, CategoryViewModel)
+ 
  ├── ui/ # Interface utilisateur
+ 
  │ ├── pages/ # Pages principales (ArticlePage, ArticleDetail, ArticleForm)
+ 
  │ ├── components/ # Composants réutilisables (ArticleCard, FilterChip, etc.)
+ 
  │ └── navigation/ # Navigation (AppNavHost)
+ 
  └── MainActivity.kt # Entrée principale de l’application
