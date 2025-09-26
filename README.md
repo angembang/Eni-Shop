@@ -58,24 +58,12 @@ ViewModel + StateFlow
 
 📂 Structure du projet
 
-com.example.eni_shop
-│
-├── data/
-│ ├── Article.kt
-│ └── ArticleRepository.kt
-│
-├── viewmodel/
-│ └── ArticleViewModel.kt
-│
-├── ui/
-│ ├── theme/ (déjà généré par Compose)
-│ ├── page/
-│ │ ├── ArticlePage.kt
-│ │ ├── ArticleDetailPage.kt
-│ │ ├── ArticleFormPage.kt
-│ │ └── CategoryFilterChip.kt
-│ └── components/
-│ ├── ArticleCard.kt
-│ └── TopBar.kt
-│
-└── MainActivity.kt
+eni-shop/
+ ├── model/ # Classes de données (Article, etc.)
+ ├── repository/ # Gestion des données
+ ├── viewmodel/ # Logique métier (ArticleViewModel, CategoryViewModel)
+ ├── ui/ # Interface utilisateur
+ │ ├── pages/ # Pages principales (ArticlePage, ArticleDetail, ArticleForm)
+ │ ├── components/ # Composants réutilisables (ArticleCard, FilterChip, etc.)
+ │ └── navigation/ # Navigation (AppNavHost)
+ └── MainActivity.kt # Entrée principale de l’application
