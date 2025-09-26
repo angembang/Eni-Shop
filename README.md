@@ -62,6 +62,7 @@ eni-shop/
  ├── model/ # Classes de données (Article, etc.)
  
  ├── repository/ # Gestion des données
+ 
  ├── viewmodel/ # Logique métier (ArticleViewModel, CategoryViewModel)
  
  ├── ui/ # Interface utilisateur
