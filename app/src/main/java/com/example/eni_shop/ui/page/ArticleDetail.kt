@@ -1,5 +1,7 @@
 package com.example.eni_shop.ui.page
 
+import android.content.Intent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,8 +25,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import com.example.eni_shop.model.Article
 import com.example.eni_shop.ui.page.components.ArticleImage
@@ -40,6 +44,7 @@ fun ArticleDetail(article: Article,
 ) {
     val formatter = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
     val isFavorite = true;
+    val context = LocalContext.current;
 
     Scaffold(
         topBar = {
@@ -52,7 +57,16 @@ fun ArticleDetail(article: Article,
                 title = { Text(
                     article.name,
                     fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleLarge) },
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.clickable{
+                        Intent(Intent.ACTION_VIEW, "https://www.google.com/search?q=${article.name}".toUri()).also {
+                            context.startActivity(it)
+                        }
+
+
+                    })
+                        },
+
 
                 navigationIcon = {
                     // Return button

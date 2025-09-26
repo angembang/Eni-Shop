@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.eni_shop.model.Category
 import com.example.eni_shop.viewModel.CategoryViewModel
 import kotlin.collections.set
 
@@ -26,9 +27,10 @@ import kotlin.collections.set
 fun CategoryFilterChip(
     modifier: Modifier = Modifier,
     categoryViewModel: CategoryViewModel = viewModel(factory = CategoryViewModel.Factory),
+    onSelectCategory : (categoriesName : List<String>)->Unit
 ) {
     val categories by categoryViewModel.categories.collectAsState()
-    val selectedStates = remember { mutableStateMapOf<String, Boolean>() }
+    val selectedStates = remember { mutableStateMapOf<Category, Boolean>() }
 
     LazyRow(
         modifier = modifier.fillMaxWidth(),
@@ -38,8 +40,15 @@ fun CategoryFilterChip(
             val selected = selectedStates[category] ?: false
 
             FilterChip(
-                onClick = { selectedStates[category] = !selected },
-                label = { Text(category) },
+                onClick = {
+                    selectedStates[category] = !selected
+                    // we retrieved selected categories, filtrated the selected categories by it value (true),
+                    // we retrieved only the key of the map(Category)
+                    // and retrieved only the key (object) name
+                    // Ex. return the list of categories names selected
+                    onSelectCategory(selectedStates.filter { it.value }.keys.toList().map { it.name })
+                },
+                label = { Text(category.name) },
                 selected = selected,
                 leadingIcon = if (selected) {
                     {
@@ -50,8 +59,13 @@ fun CategoryFilterChip(
                         )
                     }
                 } else null
+
             )
         }
     }
 
 }
+
+
+
+

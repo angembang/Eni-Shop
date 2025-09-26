@@ -41,16 +41,8 @@ class ArticleRepository {
     }
 
 
-    private val _articles = MutableStateFlow<List<Article>>(articlesList)
-    val articles : StateFlow<List<Article>> = _articles
 
-    fun filterArticles(category :String){
-        if(category == ""){
-            _articles.value = articlesList
-        }else{
-            _articles.value = articlesList.filter { category == it.category }
-        }
-    }
+
 
 
 }

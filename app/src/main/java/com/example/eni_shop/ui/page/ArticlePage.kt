@@ -1,6 +1,5 @@
 package com.example.eni_shop.ui.page
 
-import android.R.attr.navigationIcon
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,8 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.eni_shop.model.Article
 import com.example.eni_shop.ui.page.components.ArticleCard
 import com.example.eni_shop.viewModel.ArticleViewModel
@@ -37,7 +34,10 @@ fun ArticlePage(
 ) {
     val articles by articleViewModel.articles.collectAsState();
     Column (modifier.fillMaxSize()){
-        CategoryFilterChip(modifier = Modifier.padding(top = 16.dp));
+        CategoryFilterChip(modifier = Modifier.padding(top = 16.dp),
+            onSelectCategory = {
+                selectedCategories -> articleViewModel.filterArticles(selectedCategories)
+            });
         if(articles.isEmpty()) {
             Box(modifier = modifier
                 .fillMaxSize()
