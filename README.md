@@ -8,7 +8,9 @@ L’application inclut un système de filtres par catégories et une gestion sim
 
 🚀 Fonctionnalités
 
-📋 Affichage d’une liste d’articles (nom, image, prix, catégorie, description).
+📋 Affichage d’une liste d’articles (nom, image, prix, date d'ajout).
+
+📋 Affichage de détail d'un article (nom, image, prix, catégorie, description).
 
 🔍 Filtrage par catégories via des FilterChips dynamiques.
 
